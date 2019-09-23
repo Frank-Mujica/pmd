@@ -1,0 +1,28 @@
+<div class="my-login">
+    <div class="container">
+        <div class="card">
+            <form method="post" class="formSignin">
+                <img src="../../assets/images/login.png" class="Avatar">
+                <p id="profile-name" class="profileNameCard"></p>
+                <div>
+                    <span id="reauth-usuario" class="reauthUsuario"></span>
+                    <input [(ngModel)]="usuario.username" type="username" name="username" id="usernmae" class="formControl form-control"
+                        placeholder="Usuario" required autofocus />
+                </div>
+                <div>
+                    <span id="password"></span>
+                    <input [(ngModel)]="usuario.password" type="password" name="password" id="password" class="formControl form-control" placeholder="Contraseña" required />
+                </div>
+                <div id="remember" class="checkbox">
+                    <label class="Recuerdame">
+                        <input type="checkbox" value="remember-me" /><Strong>Recuerdame</Strong>
+                    </label>
+                </div>
+                <input (click)='login()' class="btnSignin btn btn-lg btn-primary btn-block" type="submit" value="Iniciar Sesión">
+            </form>
+            <a href="#" class="forgotPassword">
+                <Strong>¿Olvidaste tú contraseña?</Strong>
+            </a>
+        </div>
+    </div>
+</div>
