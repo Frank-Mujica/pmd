@@ -12,14 +12,16 @@ import { RouterModule, Routes } from '@angular/router';
 import { InicioComponent } from './inicio/inicio.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardComponentPM } from './dashboard/dashboardpm.component';
 
 const routes: Routes = [
   {path: 'inicio', component: InicioComponent},
   {path: '', redirectTo: 'inicio', pathMatch: 'full'},
-  {path: 'carousel', component: CarouselComponent},
-  {path: 'nosotros', component: NosotrosComponent},
-  {path: 'contacto', component: FooterComponent},
+  {path: 'inicio/carousel', component: CarouselComponent},
+  {path: 'inicio/nosotros', component: NosotrosComponent},
+  {path: 'inicio/contacto', component: FooterComponent},
   {path: 'dashboard', component: DashboardComponent},
+  {path: 'dashboardpm', component: DashboardComponentPM},
   {path: 'login', component: LoginComponent}
 ];
 
@@ -32,6 +34,7 @@ const routes: Routes = [
     CarouselComponent,
     NosotrosComponent,
     DashboardComponent,
+    DashboardComponentPM,
     LoginComponent
   ],
   imports: [

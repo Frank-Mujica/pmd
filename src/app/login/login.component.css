@@ -122,6 +122,10 @@
     background-color: rgb(0, 0, 0);
 }
 
+.btnLogin:hover {
+    cursor: pointer;
+}
+
 .forgotPassword {
     color: rgb(214, 214, 214);
 }

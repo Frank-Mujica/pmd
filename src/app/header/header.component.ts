@@ -12,12 +12,11 @@ import Swal from 'sweetalert2';
 
 export class HeaderComponent {
 
-    usuario: Usuario;
-
     constructor(private authService: AuthService, private router: Router) { }
-    
+
     logout(): void {
         let username = this.authService.usuario.username;
+        let role = this.authService.usuario.roles;
         this.authService.logout();
         Swal.fire('Cerrar Sesión', `Hola ${username} has cerrado sesión éxitosamente!`, 'success');
         this.router.navigate(['/inicio']);

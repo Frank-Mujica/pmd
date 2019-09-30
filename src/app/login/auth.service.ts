@@ -39,6 +39,19 @@ export class AuthService {
     }
   };
 
+  public get roles(): string {
+    if (this._usuario.roles != null) {
+      return this._usuario.roles.toString();
+    }
+    else if (this._usuario.roles.toString() == null && sessionStorage.getItem('roles') != null) {
+      this._token = sessionStorage.getItem('roles');
+      return this._usuario.roles.toString();
+    }
+    else {
+      return null;
+    }
+  };
+
   login(usuario: Usuario): Observable<any> {
 
     const urlEndPoint = 'http://localhost:8080/oauth/token';
@@ -68,6 +81,7 @@ export class AuthService {
     this._usuario.email = payload.email;
     this._usuario.roles = payload.authorities;
     sessionStorage.setItem('usuario', JSON.stringify(this._usuario));
+    sessionStorage.setItem('roles', JSON.stringify(this._usuario.roles))
   }
 
   tokenSave(accessToken: string): void {

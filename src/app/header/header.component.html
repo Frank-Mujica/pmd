@@ -1,4 +1,4 @@
-<header class="header">
+<header class="header" id="inicio">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark my-nav">
     <img src="../../assets/images/IBM_logo.png" class="logo">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
@@ -7,11 +7,15 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto mx-5">
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" routerLink="/inicio"><Strong>Inicio</Strong><span class="sr-only">(current)</span></a>
+        <li class="nav-item" routerLinkActive="active" [routerLink]="['']" fragment="inicio">
+          <a class="nav-link" href="#inicio" (click)="passTheSalt()"><Strong>Inicio</Strong><span
+              class="sr-only">(current)</span></a>
         </li>
-        <li *ngIf="authService.isAuthenticated()" class="nav-item" routerLinkActive="active">
-          <a class="nav-link" routerLink="/dashboard"><Strong>Dashboard</Strong><span class="sr-only">(current)</span></a>
+        <li class="nav-item" routerLinkActive="active" [routerLink]="['']" fragment="nosotros">
+          <a class="nav-link" href="#nosotros"><Strong>Nosotros</Strong><span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item" routerLinkActive="active" [routerLink]="['']" fragment="contacto">
+          <a class="nav-link" href="#contacto"><Strong>Contacto</Strong><span class="sr-only">(current)</span></a>
         </li>
       </ul>
       <ul class="navbar-nav navbar-right">
@@ -19,15 +23,24 @@
           <a class="btn btn-outline-primary" routerLink='/login'><Strong>Iniciar Sesión</Strong></a>
         </li>
         <li *ngIf="authService.isAuthenticated()" class="dropdown login">
-          <a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             {{authService.usuario.username}}
           </a>
-        
+
           <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <button (click)="logout()" class="dropdown-item" type="submit">Cerrar Sesión</button>
-          </div>
+        <li *ngIf="authService.isAuthenticated() && authService.usuario.roles == 'ROLE_GPL'" routerLinkActive="active">
+          <a class="dropdown-item" routerLink="/dashboard">Dashboard<span
+              class="sr-only">(current)</span></a>
         </li>
-      </ul>
+        <li *ngIf="authService.isAuthenticated() && authService.usuario.roles == 'ROLE_PM'" routerLinkActive="active">
+            <a class="dropdown-item" routerLink="/dashboardpm">Dashboard<span
+                class="sr-only">(current)</span></a>
+        </li>
+        <button (click)="logout()" class="dropdown-item logout" type="submit">Cerrar Sesión</button>
+    </div>
+    </li>
+    </ul>
     </div>
   </nav>
 </header>

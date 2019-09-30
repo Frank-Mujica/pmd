@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
 
     ngOnInit() {
         if (this.authService.isAuthenticated()) {
-            Swal.fire('Sesión Iniciada', `hola ${this.authService.usuario.username} ya estás autenticado!`, 'info');
+            Swal.fire('Sesión Iniciada', `Hola <Strong>${this.authService.usuario.username}</Strong> ya estás autenticado!`, 'info');
             this.router.navigate(['/inicio']);
         }
     }
@@ -41,16 +41,16 @@ export class LoginComponent implements OnInit {
             this.authService.tokenSave(response.access_token);
             let usuario = this.authService.usuario;
             this.router.navigate(['/inicio']);
-            Swal.fire('Bienvenido!', `Hola ${usuario.username}! has iniciado sesión correctamente!`, 'success');
+            Swal.fire('Bienvenido!', `Hola <Strong>${usuario.username}!</Strong> has iniciado sesión correctamente!`, 'success');
         }, error => {
-            if (error.status == 400) {
+            if (error.status == 400 || error.status == 401) {
                 Swal.fire('Error al ingresar', 'El nombre de usuario y/o contraseña son incorrectas!', 'error');  
             }
-
+            /*
             else if (error.status == 401) {
                 Swal.fire('Error al ingresar', 'El usuario no se encuentra registrado! </br> Por favor verifique que su nombre de usuario sea correcto.', 'error');  
             }
-
+            */
         });
 
     }

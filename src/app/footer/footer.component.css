@@ -129,25 +129,27 @@ footer {
     color: #C7C7C7;
 }
 
-
-@media screen and (max-width: 1100px){
+@media screen and (max-width: 1064px){
     
-    .containerBody{
+    .containerBody {
         flex-wrap: wrap;
         width: 100%;
     }
     
-    .column1{
+    .column1 {
         width: 100%;
+        max-width: 800px;
         padding-bottom: 15px;
     }
     
-    .column2{
+    .column2 {
         width: 100%;
+        max-width: 800px;
         padding-bottom: 15px;
     }
-    .column3{
+    .column3 {
         width: 100%;
+        max-width: 800px;
         padding-bottom: 15px;
     }
 }
