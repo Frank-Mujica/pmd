@@ -15,7 +15,7 @@ export class DashboardComponent {
     ngOnInit() {
         if (this.authService.isAuthenticated() == false) {
             Swal.fire('Acceso Denegado', `No tienes permiso para acceder a esta página! </br> Está página requiere de un usuario con permisos.`, 'warning');
-            this.router.navigate(['/inicio']);
+            this.router.navigate(['/login']);
         } else if (this.authService.roles != "ROLE_GPL") {
             Swal.fire('Acceso Denegado', 'No tienes permisos para acceder a esta página.', 'warning');
             this.router.navigate(['/inicio']);
